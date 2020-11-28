@@ -1,0 +1,232 @@
+Script started on 2020-11-16 15:38:38-08:00 [TERM="xterm" TTY="/dev/pts/13" COLUMNS="117" LINES="70"]
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m pwd
+/user/saran/cs1400/project
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m ls -l
+total 140
+-rw------- 1 saran cpp  1803 Sep  4 12:53 Calculations.class
+-rw------- 1 saran cpp  1552 Sep  4 12:29 Calculations.java
+-rw------- 1 saran cpp  1766 Nov 16 15:36 Employee.class
+-rw------- 1 saran cpp  1874 Nov 16 15:36 Employee.java
+-rw------- 1 saran cpp  2852 Oct 19 23:15 Fraction.class
+-rw------- 1 saran cpp  4609 Oct 19 23:15 Fraction.java
+-rw------- 1 saran cpp  1756 Oct 19 23:18 FractionDemo.class
+-rw------- 1 saran cpp  1645 Oct 19 22:56 FractionDemo.java
+-rw------- 1 saran cpp  1003 Aug 31 10:01 Pay.class
+-rw-r--r-- 1 saran cpp   984 Aug 31 10:12 Pay.java
+-rw------- 1 saran cpp  1317 Nov 16 15:30 ProductionWorker.class
+-rw------- 1 saran cpp  1306 Nov 16 15:24 ProductionWorker.java
+-rw------- 1 saran cpp  2523 Oct  5 22:58 RockPaperScissorsGame.class
+-rw------- 1 saran cpp  3604 Oct  5 22:56 RockPaperScissorsGame.java
+-rw------- 1 saran cpp  1724 Sep 14 22:12 Season.class
+-rw------- 1 saran cpp  2424 Sep 14 22:11 Season.java
+-rw------- 1 saran cpp  1654 Oct 10 14:24 Temperature.class
+-rw------- 1 saran cpp  1793 Oct 10 14:24 Temperature.java
+-rw------- 1 saran cpp  2534 Oct 10 14:27 TemperatureDemo.class
+-rw------- 1 saran cpp  2695 Oct 10 14:26 TemperatureDemo.java
+-rw------- 1 saran cpp  2901 Nov  9 11:58 TextEditor.class
+-rw------- 1 saran cpp  3201 Nov  9 11:53 TextEditor.java
+-rw------- 1 saran cpp  1582 Nov  9 12:07 TextEditorDemo.class
+-rw------- 1 saran cpp  1668 Nov  9 12:00 TextEditorDemo.java
+-rw------- 1 saran cpp  1329 Nov 16 15:37 WorkerTest.class
+-rw------- 1 saran cpp  1062 Nov 16 15:38 WorkerTest.java
+-rw------- 1 saran cpp     0 Nov  9 12:01 emptyFile.dat
+-rw------- 1 saran cpp     0 Nov  9 11:05 [0m[00;32memptyFile.txt[0m
+-rw------- 1 saran cpp   191 Nov  9 12:02 infile.dat
+-rw------- 1 saran cpp   202 Nov  9 11:05 [00;32minfile.txt[0m
+-rw------- 1 saran cpp  2356 Aug 31 10:15 [00;32mpj1.txt[0m
+-rw------- 1 saran cpp  4674 Sep  4 12:55 [00;32mpj2.txt[0m
+-rw------- 1 saran cpp  8479 Sep 14 22:16 [00;32mpj3.txt[0m
+-rw------- 1 saran cpp  8035 Oct  5 23:01 [00;32mpj4.txt[0m
+-rw------- 1 saran cpp  7982 Oct 10 14:29 [00;32mpj5.txt[0m
+-rw------- 1 saran cpp 13731 Oct 19 23:21 [00;32mpj6.txt[0m
+-rw------- 1 saran cpp 14627 Nov  9 12:11 [00;32mpj7.txt[0m
+-rw------- 1 saran cpp     0 Nov 16 15:38 [00;32mpj8.txt[0m
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m cat Employee.java
+// Sara Nersisian
+// CS1400, section 05
+// Project 8 - Employee Inheritance
+// 11/16/2020
+public class Employee
+{
+   private String name;
+   private String number;
+   private String hireDate;
+   private boolean isValidEmployeeNumber(String number)
+   {
+      if(number.length() !=5) //validating the length
+         return false;
+      for(int i=0; i<3; i++) //validating the first 3 digits
+      {
+         if(!Character.isDigit(number.charAt(i)))  
+            return false;
+      }
+      if(number.indexOf("-") !=3) //validating the '-' in the 3rd position
+         return false;
+      if(!Character.isLetter(number.charAt(4))
+          && !Character.isUpperCase(number.charAt(4)))
+         return false;
+      return true;
+   }
+   public Employee()
+   {
+      name = "";
+      number = "";
+      hireDate = "";
+   }
+   public Employee(String name, String number, String hireDate)
+   {
+      this.name = name;
+      if(!isValidEmployeeNumber(number))
+         this.number="";
+      else
+         this.number = number;
+      this.hireDate = hireDate;
+   }
+   public void setName(String name)
+   {
+      this.name = name;
+   }
+   public void setNumber(String number)
+   {
+      if(!isValidEmployeeNumber(number))
+         this.number="";
+      else
+         this.number = number;
+      
+   } 
+   public void setHireDate(String hireDate)
+   {
+      this.hireDate = hireDate;
+   }
+   public String getName()
+   {
+      return name;
+   }
+   public String getNumber()
+   {
+      return number;
+   }
+   public String getHireDate()
+   {
+      return hireDate;
+   }
+   public String toString()
+   {
+      return "Name: " + name
+             + "\nEmployee Number: "
+             //the below line is chrcking if the field is empty (which means invalid format)
+             + (number.length()>0 ? number: "INVALID EMPLOYEE NUMBER") 
+             + "\nHire Date: " + hireDate;
+   }
+}
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m cat ProductionWorker.java
+// Sara Nersisian
+// CS1400, section 05
+// Project 8 - Employee Inheritance
+// 11/16/2020
+
+import java.text.DecimalFormat;
+public class ProductionWorker extends Employee
+{
+   private int shift;
+   private double hourlyPayRate;
+   public ProductionWorker()
+   {
+      shift = 1;
+      hourlyPayRate = 0.0;
+   }
+   public ProductionWorker(String name, String number,
+                           String hireDate, int shift,
+                           double hourlyPayRate)
+   {
+      super(name,number,hireDate);
+      this.shift = shift;
+      this.hourlyPayRate = hourlyPayRate; 
+   }
+   public void setShift(int shift)
+   {
+      this.shift = shift;
+   }
+   public void setHourlyPayRate(double hourlyPayRate)
+   {
+      this.hourlyPayRate = hourlyPayRate;
+   }
+   public int getShift()
+   {
+      return shift;
+   }
+   public double getHourlyPayRate()
+   {
+      return hourlyPayRate;
+   }
+   public String toString()
+   {
+      String dayOrNight;
+      if(shift==1)
+         dayOrNight = "Day";
+      else if(shift ==2)
+         dayOrNight = "Night";
+      else
+         dayOrNight= "INVALID SHIFT NUMBER";
+
+      DecimalFormat df = new DecimalFormat("#.00");
+      return super.toString() 
+             + "\nShift: " + dayOrNight
+             + "\nHourly Pay Rate: $" + df.format(hourlyPayRate);
+   }  
+}
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m cat WorkerTest.java
+// Sara Nersisian
+// CS1400, section 05
+// Project 8 - Employee Inheritance
+// 11/16/2020
+
+public class WorkerTest
+{
+   public static void main(String[] args)
+   {  
+      System.out.println("Here's the first production worker.");      
+      ProductionWorker employee1 = new ProductionWorker("John Smith", "123-A",
+                                                        "11-15-2005",1, 23.50);
+      System.out.println(employee1);
+      System.out.println("\nHere's the second production worker.");
+      ProductionWorker employee2 = new ProductionWorker();
+      employee2.setName("Joan Jones");
+      employee2.setNumber("225-L");
+      employee2.setHireDate("12-12-2018");
+      employee2.setShift(2);
+      employee2.setHourlyPayRate(18.50);
+      System.out.println(employee2);     
+      System.out.println("\nHere's the third production worker.");
+      ProductionWorker employee3 = new ProductionWorker("Tony Gaddis", "12A-x1",
+                                                        "1-23-2006",3, 19.50);
+      System.out.println(employee3);
+
+   }
+}
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m javac WorkerTest.java
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m java WorkerTest
+Here's the first production worker.
+Name: John Smith
+Employee Number: 123-A
+Hire Date: 11-15-2005
+Shift: Day
+Hourly Pay Rate: $23.50
+
+Here's the second production worker.
+Name: Joan Jones
+Employee Number: 225-L
+Hire Date: 12-12-2018
+Shift: Night
+Hourly Pay Rate: $18.50
+
+Here's the third production worker.
+Name: Tony Gaddis
+Employee Number: INVALID EMPLOYEE NUMBER
+Hire Date: 1-23-2006
+Shift: INVALID SHIFT NUMBER
+Hourly Pay Rate: $19.50
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m exit
+exit
+
+Script done on 2020-11-16 15:40:10-08:00 [COMMAND_EXIT_CODE="0"]

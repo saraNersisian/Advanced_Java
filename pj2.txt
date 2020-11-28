@@ -1,0 +1,137 @@
+Script started on 2020-09-04 12:52:40-07:00 [TERM="xterm" TTY="/dev/pts/1" COLUMNS="80" LINES="24"]
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m pwd
+/user/saran/cs1400/project
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m ls -l
+total 12
+-rw------- 1 saran cpp 1803 Sep  4 12:45 Calculations.class
+-rw------- 1 saran cpp 1552 Sep  4 12:29 Calculations.java
+-rw------- 1 saran cpp 1003 Aug 31 10:01 Pay.class
+-rw-r--r-- 1 saran cpp  984 Aug 31 10:12 Pay.java
+-rw------- 1 saran cpp 2356 Aug 31 10:15 [0m[00;32mpj1.txt[0m
+-rw------- 1 saran cpp    0 Sep  4 12:52 [00;32mpj2.txt[0m
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m cat Calculations.java
+// Sara Nersisian
+// CS1400, section 05
+// Project 2 - calculations on integeres and strings
+
+
+import java.util.Scanner;
+
+
+public class Calculations
+{
+   public static void main(String [] args)
+   {
+      int num1;
+      int num2;
+      String str1;
+      String str2;
+      
+      Scanner scnr = new Scanner(System.in);
+
+      System.out.print("Enter a number: ");
+      num1 = scnr.nextInt();
+      System.out.print("Enter a second number: ");
+      num2 = scnr.nextInt();
+      System.out.print("Enter a string: ");
+      scnr.nextLine();
+      str1 = scnr.nextLine();
+      System.out.print("Enter a second string: ");
+      str2 = scnr.nextLine(); 
+      
+      int lastChar1 = str1.length() - 1;
+      int lastChar2 = str2.length() - 1;
+
+      System.out.println(num1 + " + " + num2 + " = " + (num1 + num2));
+      System.out.println(num1 + " - " + num2 + " = " + (num1 - num2));
+      System.out.println(num1 + " * " + num2 + " = " + (num1 * num2));
+      System.out.println(num1 + " / " + num2 + " = " + (num1 / num2));
+      System.out.println(num1 + " % " + num2 + " = " + (num1 % num2));
+      System.out.println(num1 + " / " + num2 + " = " + ((num1 + 0.0) / (num2 + 0.0)) );
+      System.out.println("First word, uppercase: " + str1.toUpperCase());
+      System.out.println("Second word, lowercase: " + str2.toLowerCase());
+      System.out.println("First characters: " + str1.charAt(0) + " and  " + str2.charAt(0));
+      System.out.println("Last characters: " + str1.charAt(lastChar1) + " and " + str2.charAt(lastChar2) ) ;
+      
+   }
+}
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m javac Calv[Kculations.java
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m java V[KCa;[Klculations
+Enter a number: 2
+Enter a second number: 3
+Enter a string: Hello
+Enter a second string: World
+2 + 3 = 5
+2 - 3 = -1
+2 * 3 = 6
+2 / 3 = 0
+2 % 3 = 2
+2 / 3 = 0.6666666666666666
+First word, uppercase: HELLO
+Second word, lowercase: world
+First characters: H and  W
+Last characters: o and d
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m java c[KCalculations
+Enter a number: 10
+Enter a second number: 5
+Enter a string: HO I
+Enter a second string: Hello    ELLO
+10 + 5 = 15
+10 - 5 = 5
+10 * 5 = 50
+10 / 5 = 2
+10 % 5 = 0
+10 / 5 = 2.0
+First word, uppercase: HI
+Second word, lowercase: hello
+First characters: H and  H
+Last characters: I and O
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m java Calculations
+Enter a number: 6
+Enter a second number: 6
+Enter a string: turtle
+Enter a second string: turtle
+6 + 6 = 12
+6 - 6 = 0
+6 * 6 = 36
+6 / 6 = 1
+6 % 6 = 0
+6 / 6 = 1.0
+First word, uppercase: TURTLE
+Second word, lowercase: turtle
+First characters: t and  t
+Last characters: e and e
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m java Calculations
+Enter a number: 0
+Enter a second number: 3
+Enter a string: a
+Enter a second string: z
+0 + 3 = 3
+0 - 3 = -3
+0 * 3 = 0
+0 / 3 = 0
+0 % 3 = 0
+0 / 3 = 0.0
+First word, uppercase: A
+Second word, lowercase: z
+First characters: a and  z
+Last characters: a and z
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m java Calculations
+Enter a number: -20
+Enter a second number: 5
+Enter a string: Sara
+Enter a second string: Nersisian
+-20 + 5 = -15
+-20 - 5 = -25
+-20 * 5 = -100
+-20 / 5 = -4
+-20 % 5 = 0
+-20 / 5 = -4.0
+First word, uppercase: SARA
+Second word, lowercase: nersisian
+First characters: S and  N
+Last characters: a and n
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m exit
+exit
+
+Script done on 2020-09-04 12:55:41-07:00 [COMMAND_EXIT_CODE="0"]

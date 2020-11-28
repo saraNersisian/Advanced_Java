@@ -1,0 +1,230 @@
+Script started on 2020-10-05 22:57:09-07:00 [TERM="xterm" TTY="/dev/pts/4" COLUMNS="237" LINES="70"]
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m pwd
+/user/saran/cs1400/project
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m ls -l
+total 40
+-rw------- 1 saran cpp 1803 Sep  4 12:53 Calculations.class
+-rw------- 1 saran cpp 1552 Sep  4 12:29 Calculations.java
+-rw------- 1 saran cpp 1003 Aug 31 10:01 Pay.class
+-rw-r--r-- 1 saran cpp  984 Aug 31 10:12 Pay.java
+-rw------- 1 saran cpp 2607 Oct  5 22:54 RockPaperScissorsGame.class
+-rw------- 1 saran cpp 3604 Oct  5 22:56 RockPaperScissorsGame.java
+-rw------- 1 saran cpp 1724 Sep 14 22:12 Season.class
+-rw------- 1 saran cpp 2424 Sep 14 22:11 Season.java
+-rw------- 1 saran cpp 2356 Aug 31 10:15 [0m[00;32mpj1.txt[0m
+-rw------- 1 saran cpp 4674 Sep  4 12:55 [00;32mpj2.txt[0m
+-rw------- 1 saran cpp 8479 Sep 14 22:16 [00;32mpj3.txt[0m
+-rw------- 1 saran cpp    0 Oct  5 22:57 [00;32mpj4.txt[0m
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m cat RockPaperScissorsGame.java
+ //Sara Nersisian
+//CS1400, section 05
+//Project 4 - Rock, Paper, Scissors Game
+//10/05/2020
+
+import java.util.Scanner;
+import java.util.Random;
+
+public class RockPaperScissorsGame
+{
+   public static void main(String[] args)
+   {
+      Scanner kb =new Scanner (System.in);
+      String computer; // to hold computer’s choice
+      String user; // to hold user’s choice
+      char playAgain ='y';
+      do
+      { 
+         do
+         {
+            computer = computerChoice();
+            user = userChoice();
+            System.out.println("The computer's choice was " + computer +"." );
+            System.out.println("The user's choice was " + user +".\n" );
+            determineWinner(computer, user);
+         }while(user.equalsIgnoreCase(computer));
+         System.out.println("\nPlay again? (y/n)");
+         playAgain=kb.nextLine().charAt(0);
+      } while(playAgain=='Y' || playAgain=='y');
+      System.out.println("Done");
+   }
+
+   public static String computerChoice()
+   {
+      Random rand = new Random();
+      int choice = rand.nextInt(3)+1;
+    //System.out.println("random = "+ choice);
+      String choiceName="";
+      switch(choice)
+      {
+         case 1:
+            choiceName = "rock";
+            break;
+         case 2:
+            choiceName = "paper";
+            break;
+         case 3:
+            choiceName = "scissors";
+            break;
+         default:
+            choiceName = "invalid";
+            break;
+      }
+      return choiceName;
+   }
+	
+   public static String userChoice()
+   {
+      Scanner kb =new Scanner (System.in);
+      String userChoice;
+      System.out.print("Enter rock, paper, or scissors: ");
+      userChoice = kb.nextLine();
+      while(!isValidChoice(userChoice))
+       {
+         System.out.print("Invalid input, enter rock, paper, or scissors: ");
+         userChoice = kb.nextLine();			
+      }
+      return userChoice;	
+   }
+	
+   public static boolean isValidChoice(String choice)
+   {
+      if(choice.equalsIgnoreCase("rock")
+         || choice.equalsIgnoreCase("paper")
+         || choice.equalsIgnoreCase("scissors") )
+         return true; 
+      else 
+         return false;
+   }
+
+   public static void determineWinner (String computer, String user) 
+   {
+      String winner = "";
+      if (computer.equalsIgnoreCase ("rock") && user.equalsIgnoreCase  ("scissors"))
+      {
+          System.out.println("Rock smashes scissors.");
+          winner = "computer";
+      }
+      if (user.equalsIgnoreCase ("rock") && computer.equalsIgnoreCase ("scissors"))
+      {
+         System.out.println("Rock smashes scissors.");
+         winner = "user";
+      }
+      if (computer.equalsIgnoreCase ("scissors") && user.equalsIgnoreCase ( "paper"))
+      {
+         System.out.println("Scissors cut paper.");
+         winner = "computer";
+      }
+      if (user.equalsIgnoreCase ("scissors") && computer.equalsIgnoreCase ("paper"))
+      {
+         System.out.println("Scissors cut paper.");
+         winner = "user";
+      }
+      if (computer.equalsIgnoreCase ("paper") && user.equalsIgnoreCase ( "rock"))
+      {
+         System.out.println("Paper wraps rock.");
+         winner = "computer";
+      }
+      if (user.equalsIgnoreCase ("paper") && computer.equalsIgnoreCase ("rock")) 
+      {
+         System.out.println("Paper wraps rock.");
+         winner = "user"; 
+      }
+      if(winner.equals("computer") || winner.equals("user") )
+         System.out.println("The "+ winner + " wins!");
+
+      if (user.equalsIgnoreCase (computer))
+         System.out.println("The game is tied! \nGet ready to play again...");
+		
+   }
+
+}
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m cat RockPaperScissorsGame.javals -l[K[2Ppwdjava RockPaperScissorsls[Kjavac RockPaperScissors.java
+javac: file not found: RockPaperScissors.java
+Usage: javac <options> <source files>
+use -help for a list of possible options
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m javac RockPaperScissors.javacat RockPaperScissorsGame.javals -l[K[2Ppwdjava RockPaperScissorsls[Kjavac RockPaperScissors.java[6P RockPaperScissorsc RockPaperScissors.javaG.javaa.javam.javae.java
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m javac RockPaperScissorsGame.java[C[K[K[K[K[K[C[1P RockPaperScissorsGame[1P RockPaperScissorsGame[1P RockPaperScissorsGamev RockPaperScissorsGamea RockPaperScissorsGame
+Enter rock, paper, or scissors: 	rocky
+Invalid input, enter rock, paper, or scissors: roc
+Invalid input, enter rock, paper, or scissors: rock
+The computer's choice was scissors.
+The user's choice was rock.
+
+Rock smashes scissors.
+The user wins!
+
+Play again? (y/n)
+y
+Enter rock, paper, or scissors: paper
+The computer's choice was paper.
+The user's choice was paper.
+
+The game is tied! 
+Get ready to play again...
+Enter rock, paper, or scissors: rock
+The computer's choice was scissors.
+The user's choice was rock.
+
+Rock smashes scissors.
+The user wins!
+
+Play again? (y/n)
+y Yes
+Enter rock, paper, or scissors: Scissors
+The computer's choice was rock.
+The user's choice was Scissors.
+
+Rock smashes scissors.
+The computer wins!
+
+Play again? (y/n)
+YES
+Enter rock, paper, or scissors: Rock
+The computer's choice was scissors.
+The user's choice was Rock.
+
+Rock smashes scissors.
+The user wins!
+
+Play again? (y/n)
+yEs
+Enter rock, paper, or scissors: Peper
+Invalid input, enter rock, paper, or scissors: paper
+The computer's choice was rock.
+The user's choice was paper.
+
+Paper wraps rock.
+The user wins!
+
+Play again? (y/n)
+Y
+Enter rock, paper, or scissors: Scissers
+Invalid input, enter rock, paper, or scissors: scissors
+The computer's choice was scissors.
+The user's choice was scissors.
+
+The game is tied! 
+Get ready to play again...
+Enter rock, paper, or scissors: paper
+The computer's choice was rock.
+The user's choice was paper.
+
+Paper wraps rock.
+The user wins!
+
+Play again? (y/n)
+ye
+Enter rock, paper, or scissors: Paper
+The computer's choice was scissors.
+The user's choice was Paper.
+
+Scissors cut paper.
+The computer wins!
+
+Play again? (y/n)
+n
+Done
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m exit
+exit
+
+Script done on 2020-10-05 23:01:09-07:00 [COMMAND_EXIT_CODE="0"]

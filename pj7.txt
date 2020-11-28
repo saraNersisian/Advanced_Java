@@ -1,0 +1,475 @@
+Script started on 2020-11-09 12:06:08-08:00 [TERM="xterm" TTY="/dev/pts/13" COLUMNS="93" LINES="61"]
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m pwd
+/user/saran/cs1400/project
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m ls 
+Calculations.class  RockPaperScissorsGame.class  TextEditor.class      [0m[00;32mpj1.txt[0m
+Calculations.java   RockPaperScissorsGame.java   TextEditor.java       [00;32mpj2.txt[0m
+Fraction.class      Season.class                 TextEditorDemo.class  [00;32mpj3.txt[0m
+Fraction.java       Season.java                  TextEditorDemo.java   [00;32mpj4.txt[0m
+FractionDemo.class  Temperature.class            emptyFile.dat         [00;32mpj5.txt[0m
+FractionDemo.java   Temperature.java             [00;32memptyFile.txt[0m         [00;32mpj6.txt[0m
+Pay.class           TemperatureDemo.class        infile.dat            [00;32mpj7.txt[0m
+Pay.java            TemperatureDemo.java         [00;32minfile.txt[0m
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m cat TextEditor,java[K[K[K[K[K.java
+// Sara Nersisian
+// CS1400, section 05
+// Project 7 - Text Editor
+// 11/09/2020
+
+import java.io.File;
+import java.io.*;
+import java.util.Scanner;
+
+public class TextEditor
+{
+   public final int MAX = 100;
+   private String[] lines = new String[MAX];
+   private int size;
+
+   public TextEditor( File myFile) throws IOException
+   {
+      Scanner inputFile = new Scanner(myFile);
+      this.size=0;
+      while(inputFile.hasNext())
+      {
+         lines[size] = inputFile.nextLine();
+         size++;
+      }
+      inputFile.close();
+   }
+
+   public void print()
+   {
+      for(int i=0; i<size; i++)
+         System.out.printf("%-2d  : %s\n" ,i, lines[i]);
+      if(size==0)
+         System.out.println("empty file");
+   }
+
+   public void find()
+   {
+      System.out.print("enter pattern: ");
+      Scanner kb = new Scanner(System.in);
+      String pattern = kb.nextLine();
+      if(size==0)
+         System.out.println("empty file");
+      else
+      {
+         int position;
+         for(int i=0; i<size; i++)
+         {
+            position = lines[i].indexOf(pattern);
+            if(position!=-1)
+            {
+               System.out.println(i + " : " + lines[i]);
+               System.out.println("position = " + position);
+            }
+          if(i == size-1 && position == -1)
+             System.out.println("pattern not found");
+         }
+      }
+   }
+
+   public void replace()
+   { 
+      Scanner kb = new Scanner(System.in);
+      System.out.print("enter old pattern: ");
+      String oldPattern = kb.nextLine();
+      if(size==0)
+      {
+          System.out.print("enter new pattern: ");
+          String newPattern = kb.nextLine();
+          System.out.println("empty file");
+       }
+      else
+      {
+         if(!(oldPattern.equals("")))
+         {
+            System.out.print("enter new pattern: ");
+            String newPattern = kb.nextLine();
+            int position;
+            int count = 0;
+            for(int i=0; i<size; i++)
+            { 
+               position = lines[i].indexOf(oldPattern);
+               while(position!=-1)
+               {
+                  String starting = lines[i].substring(0, position);
+                  String ending = lines[i].substring(position + oldPattern.length());
+                  lines[i] = starting + newPattern +ending;
+                  position =  lines[i].indexOf(oldPattern);
+                  count++;
+               }
+               if(i == size-1 && count == 0)
+               System.out.println("\"" + oldPattern + "\" is not found in the file.");
+            }
+            System.out.println("done");
+         }
+         else
+            System.out.println("illegal pattern: length must be at least one");
+      }
+   }
+
+   public void sort()
+   {
+      if(size==0)
+      System.out.println("empty file");
+      else
+      {
+         String temp;
+         for(int i=0;i<size;i++)
+         {
+            for(int j=0;j<size;j++)
+            {
+               if(lines[i].compareTo(lines[j])<1)
+               {
+                  temp=lines[i];
+                  lines[i]=lines[j];
+                  lines[j]=temp;
+               }
+            }
+         }
+         System.out.println("sorted!");
+      }
+   }
+}
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m cat TextEditor.javals [Kpwdico TextEditor.javals[Kcd cs1400/projectjava TextEditorDemotDemoc TextEditorDemo.javadg[3Ppico TextEditorDemo.java[1Ptxtjavac TextEditorDemo.java[4P.javaDemo.java[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kcat TextEditoDemo.txt
+cat: TextEditoDemo.txt: No such file or directory
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m cat TextEditorDemo.java
+// Sara Nersisian
+// CS1400, section 05
+// Project 7 - Text Editor
+// 11/09/2020
+
+import java.io.File;
+import java.io.*;
+import java.util.Scanner;
+
+public class TextEditorDemo
+{
+   public static void main(String[] args) throws IOException
+   {
+      Scanner kb = new Scanner(System.in);
+      System.out.print("enter a file name: ");
+      String filename = kb.nextLine();
+      File myFile = new File(filename);
+      if(!myFile.exists())
+      {
+         System.out.println("input file does not exist!");
+         System.exit(0);
+      }
+      char choice = menu();
+      TextEditor text = new TextEditor(myFile);
+      while(choice!='q')
+      {
+         switch(choice)
+         {
+            case 'p':
+               text.print();
+               break;
+            case 'f':
+               text.find();
+               break;
+            case 'r':
+               text.replace();
+               break;
+            case 's':
+               text.sort();
+               break; 
+            default:
+               System.out.println("Invalid choice!");
+          }
+          choice = menu();
+      }
+      System.out.println("bye");
+      System.exit(0);
+
+   }
+   public static char menu()
+   {
+      Scanner kb = new Scanner(System.in);
+      System.out.println("\n[p]rint input file with line numbers"
+                       + "\n[f]ind the leftmost occurrences of pattern for all lines"
+                       + "\n[r]eplace all occurances of old by new"
+                       + "\n[s]ort the input file"
+                       + "\n[q]uit the editor");
+     System.out.print("Your choice: ");
+     char choice = kb.nextLine().charAt(0);
+     return choice;
+   }
+}
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m hja[K[K[Kjavac TextEditoDemo.java
+javac: file not found: TextEditoDemo.java
+Usage: javac <options> <source files>
+use -help for a list of possible options
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m javac TextEditoDemo.javarDemo.java
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m javac TextEditorDemo.java[K[K[K[K[K[Ko[1P TextEditorDemo
+enter a file name: noSuchFile.dat
+input file does not exist!
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m java TextEditorDemo
+enter a file name: emptyFile.dat
+
+[p]rint input file with line numbers
+[f]ind the leftmost occurrences of pattern for all lines
+[r]eplace all occurances of old by new
+[s]ort the input file
+[q]uit the editor
+Your choice: p
+empty file
+
+[p]rint input file with line numbers
+[f]ind the leftmost occurrences of pattern for all lines
+[r]eplace all occurances of old by new
+[s]ort the input file
+[q]uit the editor
+Your choice: f
+enter pattern: hw ello
+empty file
+
+[p]rint input file with line numbers
+[f]ind the leftmost occurrences of pattern for all lines
+[r]eplace all occurances of old by new
+[s]ort the input file
+[q]uit the editor
+Your choice: r
+enter old pattern: hello
+enter new pattern: world
+empty file
+
+[p]rint input file with line numbers
+[f]ind the leftmost occurrences of pattern for all lines
+[r]eplace all occurances of old by new
+[s]ort the input file
+[q]uit the editor
+Your choice: s
+empty file
+
+[p]rint input file with line numbers
+[f]ind the leftmost occurrences of pattern for all lines
+[r]eplace all occurances of old by new
+[s]ort the input file
+[q]uit the editor
+Your choice: q
+bye
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m java TextEditorDemo
+enter a file name: infile, .dat
+
+[p]rint input file with line numbers
+[f]ind the leftmost occurrences of pattern for all lines
+[r]eplace all occurances of old by new
+[s]ort the input file
+[q]uit the editor
+Your choice: p
+0   : Hello World
+1   : This is a test file for
+2   : CS 1400 Java Programming
+3   : project #7
+4   : 10/18/2020
+5   : study Java the following days:
+6   : Monday
+7   : Tuesday
+8   : Wednesday
+9   : Thursday
+10  : Friday
+11  : Monday through Friday
+12  : weekdays only
+
+[p]rint input file with line numbers
+[f]ind the leftmost occurrences of pattern for all lines
+[r]eplace all occurances of old by new
+[s]ort the input file
+[q]uit the editor
+Your choice: f
+enter pattern: day
+5 : study Java the following days:
+position = 25
+6 : Monday
+position = 3
+7 : Tuesday
+position = 4
+8 : Wednesday
+position = 6
+9 : Thursday
+position = 5
+10 : Friday
+position = 3
+11 : Monday through Friday
+position = 3
+12 : weekdays only
+position = 4
+
+[p]rint input file with line numbers
+[f]ind the leftmost occurrences of pattern for all lines
+[r]eplace all occurances of old by new
+[s]ort the input file
+[q]uit the editor
+Your choice: r
+enter old pattern: day
+enter new pattern: ----
+done
+
+[p]rint input file with line numbers
+[f]ind the leftmost occurrences of pattern for all lines
+[r]eplace all occurances of old by new
+[s]ort the input file
+[q]uit the editor
+Your choice: p
+0   : Hello World
+1   : This is a test file for
+2   : CS 1400 Java Programming
+3   : project #7
+4   : 10/18/2020
+5   : study Java the following ----s:
+6   : Mon----
+7   : Tues----
+8   : Wednes----
+9   : Thurs----
+10  : Fri----
+11  : Mon---- through Fri----
+12  : week----s only
+
+[p]rint input file with line numbers
+[f]ind the leftmost occurrences of pattern for all lines
+[r]eplace all occurances of old by new
+[s]ort the input file
+[q]uit the editor
+Your choice: r
+enter old pattern: ----
+enter new pattern: --
+done
+
+[p]rint input file with line numbers
+[f]ind the leftmost occurrences of pattern for all lines
+[r]eplace all occurances of old by new
+[s]ort the input file
+[q]uit the editor
+Your choice: p
+0   : Hello World
+1   : This is a test file for
+2   : CS 1400 Java Programming
+3   : project #7
+4   : 10/18/2020
+5   : study Java the following --s:
+6   : Mon--
+7   : Tues--
+8   : Wednes--
+9   : Thurs--
+10  : Fri--
+11  : Mon-- through Fri--
+12  : week--s only
+
+[p]rint input file with line numbers
+[f]ind the leftmost occurrences of pattern for all lines
+[r]eplace all occurances of old by new
+[s]ort the input file
+[q]uit the editor
+Your choice: s
+sorted!
+
+[p]rint input file with line numbers
+[f]ind the leftmost occurrences of pattern for all lines
+[r]eplace all occurances of old by new
+[s]ort the input file
+[q]uit the editor
+Your choice: p
+0   : 10/18/2020
+1   : CS 1400 Java Programming
+2   : Fri--
+3   : Hello World
+4   : Mon--
+5   : Mon-- through Fri--
+6   : This is a test file for
+7   : Thurs--
+8   : Tues--
+9   : Wednes--
+10  : project #7
+11  : study Java the following --s:
+12  : week--s only
+
+[p]rint input file with line numbers
+[f]ind the leftmost occurrences of pattern for all lines
+[r]eplace all occurances of old by new
+[s]ort the input file
+[q]uit the editor
+Your choice: f
+enter pattern: daisy
+pattern not found
+
+[p]rint input file with line numbers
+[f]ind the leftmost occurrences of pattern for all lines
+[r]eplace all occurances of old by new
+[s]ort the input file
+[q]uit the editor
+Your choice: r
+enter old pattern: 
+illegal pattern: length must be at least one
+
+[p]rint input file with line numbers
+[f]ind the leftmost occurrences of pattern for all lines
+[r]eplace all occurances of old by new
+[s]ort the input file
+[q]uit the editor
+Your choice: a
+Invalid choice!
+
+[p]rint input file with line numbers
+[f]ind the leftmost occurrences of pattern for all lines
+[r]eplace all occurances of old by new
+[s]ort the input file
+[q]uit the editor
+Your choice: *86
+Invalid choice!
+
+[p]rint input file with line numbers
+[f]ind the leftmost occurrences of pattern for all lines
+[r]eplace all occurances of old by new
+[s]ort the input file
+[q]uit the editor
+Your choice: r
+enter old pattern: --
+enter new pattern: day
+done
+
+[p]rint input file with line numbers
+[f]ind the leftmost occurrences of pattern for all lines
+[r]eplace all occurances of old by new
+[s]ort the input file
+[q]uit the editor
+Your choice: p
+0   : 10/18/2020
+1   : CS 1400 Java Programming
+2   : Friday
+3   : Hello World
+4   : Monday
+5   : Monday through Friday
+6   : This is a test file for
+7   : Thursday
+8   : Tuesday
+9   : Wednesday
+10  : project #7
+11  : study Java the following days:
+12  : weekdays only
+
+[p]rint input file with line numbers
+[f]ind the leftmost occurrences of pattern for all lines
+[r]eplace all occurances of old by new
+[s]ort the input file
+[q]uit the editor
+Your choice: q
+bye
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m exit[K[K[K[Kjava TextEditorDemo
+enter a file name: TextEditor.java
+
+[p]rint input file with line numbers
+[f]ind the leftmost occurrences of pattern for all lines
+[r]eplace all occurances of old by new
+[s]ort the input file
+[q]uit the editor
+Your choice: p
+Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: 100
+	at TextEditor.<init>(TextEditor.java:22)
+	at TextEditorDemo.main(TextEditorDemo.java:24)
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m exit
+exit
+
+Script done on 2020-11-09 12:11:57-08:00 [COMMAND_EXIT_CODE="1"]

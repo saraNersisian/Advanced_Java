@@ -1,0 +1,228 @@
+Script started on 2020-09-14 22:11:47-07:00 [TERM="xterm" TTY="/dev/pts/0" COLUMNS="189" LINES="62"]
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m pwd
+/user/saran/cs1400/project
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m ls -l
+total 23
+-rw------- 1 saran cpp 1803 Sep  4 12:53 Calculations.class
+-rw------- 1 saran cpp 1552 Sep  4 12:29 Calculations.java
+-rw------- 1 saran cpp 1003 Aug 31 10:01 Pay.class
+-rw-r--r-- 1 saran cpp  984 Aug 31 10:12 Pay.java
+-rw------- 1 saran cpp 1730 Sep 14 22:07 Season.class
+-rw------- 1 saran cpp 2424 Sep 14 22:11 Season.java
+-rw------- 1 saran cpp 2356 Aug 31 10:15 [0m[00;32mpj1.txt[0m
+-rw------- 1 saran cpp 4674 Sep  4 12:55 [00;32mpj2.txt[0m
+-rw------- 1 saran cpp    0 Sep 14 22:11 [00;32mpj3.txt[0m
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m cat Season.java
+// Sara Nersisian
+// CS1400, section 05
+// Project 3 - determining the seasons
+// 09/14/2020
+
+
+import java.util.Scanner;
+
+
+public class Season
+{
+   public static void main(String[] args)
+   {
+      int month;
+      int day = 0;
+      String season ;
+
+      Scanner kb = new Scanner(System.in);
+   
+      System.out.print("enter month (1-12): "); 
+      month = kb.nextInt();
+      
+      while( month < 1 || month > 12)
+      {   
+         System.out.println("Invalid month!");
+         System.exit(0);
+      }
+
+      switch(month)
+      {
+         case 1:
+         case 3:
+         case 5:
+         case 7:
+         case 8:
+         case 10:
+         case 12:
+            System.out.print("enter day (1-31): ");
+            day = kb.nextInt();
+               if (day < 1 || day > 31)
+               {
+                  System.out.println("Invalid day!");
+                  System.exit(0);
+               }
+            break;
+         case 4:
+         case 6:
+         case 9:
+         case 11:
+            System.out.print("enter day (1-30): ");
+            day = kb.nextInt();
+               if (day < 1 || day > 30)
+               {
+                  System.out.println("Invalid day!");
+                  System.exit(0);
+               }
+            break;
+         case 2:
+            System.out.print("enter day (1-28): ");
+            day = kb.nextInt();
+               if (day < 1 || day > 28)
+               {
+                  System.out.println("Invalid day!");
+                  System.exit(0);
+               }
+            break;
+         default:  
+            System.out.println("Invalid month!");
+            System.exit(0);
+         
+      }
+      
+      
+      if (month == 3 && day >= 21)
+         season = "Spring";
+      else if (month == 4 || month == 5)
+         season = "Spring";
+      else if (month == 6 && day <= 20)
+         season = "Spring";
+      
+      else if (month == 6 && day >=21 ) 
+         season = "Summer";
+      else if (month == 7 || month == 8)
+         season = "Summer";
+      else if (month == 9 && day <=20)
+         season = "Summer";
+ 
+      else if (month == 9 && day >=21)
+         season = "Fall";
+      else if (month == 10 || month == 11)
+         season = "Fall";
+      else if (month == 12 && day <= 20)
+         season = "Fall";
+
+      else
+         season = "Winter";
+
+
+
+      System.out.println(month + "/" + day + " is in the " + season + " season.");
+
+ 
+   } 
+}
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m javac Season.java
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m java Season
+enter month (1-12): 1
+enter day (1-31): 5
+1/5 is in the Winter season.
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m java Season
+enter month (1-12): 2
+enter day (1-28): 5
+2/5 is in the Winter season.
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m java Season
+enter month (1-12): 4
+enter day (1-30): 10
+4/10 is in the Spring season.
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m java Season5
+Error: Could not find or load main class Season5
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m 10
+bash: 10: command not found
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m 
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m 10[Kjava Season
+enter month (1-12): 5
+enter day (1-31): 10
+5/10 is in the Spring season.
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m java Season
+enter month (1-12): 7
+enter day (1-31): 15
+7/15 is in the Summer season.
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m java Season
+enter month (1-12): 8
+enter day (1-31): 15
+8/15 is in the Summer season.
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m java Season10[K[K
+enter month (1-12): 10
+enter day (1-31): 20
+10/20 is in the Fall season.
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m java Season
+enter month (1-12): 11
+enter day (1-30): 20
+11/20 is in the Fall season.
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m java Season
+enter month (1-12): 3
+enter day (1-31): 20
+3/20 is in the Winter season.
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m java Season
+enter month (1-12): 3
+enter day (1-31): 21
+3/21 is in the Spring season.
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m java Season
+enter month (1-12): 6
+enter day (1-30): 20
+6/20 is in the Spring season.
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m java Season
+enter month (1-12): 2 6
+enter day (1-30): 21
+6/21 is in the Summer season.
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m java Season
+enter month (1-12): 9
+enter day (1-30): 20
+9/20 is in the Summer season.
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m java Season
+enter month (1-12): 9
+enter day (1-30): 21
+9/21 is in the Fall season.
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m java Season
+enter month (1-12): 12
+enter day (1-31): 20
+12/20 is in the Fall season.
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m java Season
+enter month (1-12): 12
+enter day (1-31): 21
+12/21 is in the Winter season.
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m java Season
+enter month (1-12): 0
+Invalid month!
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m java Season
+enter month (1-12): -3
+Invalid month!
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m java Season
+enter month (1-12): 13
+Invalid month!
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m java Season
+enter month (1-12): 1
+enter day (1-31): 0
+Invalid day!
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m java Season
+enter month (1-12): 1
+enter day (1-31): -5
+Invalid day!
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m java Season
+enter month (1-12): 1
+enter day (1-31): 1
+1/1 is in the Winter season.
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m java Season
+enter month (1-12): 2
+enter day (1-28): 29
+Invalid day!
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m java Season
+enter month (1-12): 6
+enter day (1-30): 31
+Invalid day!
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m java Season
+enter month (1-12): 9 12
+enter day (1-31): 32
+Invalid day!
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m done
+bash: syntax error near unexpected token `done'
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m exit
+exit
+
+Script done on 2020-09-14 22:16:55-07:00 [COMMAND_EXIT_CODE="2"]

@@ -1,0 +1,65 @@
+Script started on 2020-08-31 10:13:58-07:00 [TERM="xterm" TTY="/dev/pts/2" COLUMNS="93" LINES="61"]
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m pwd
+/user/saran/cs1400/project
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m ls -l
+total 4
+-rw------- 1 saran cpp 1003 Aug 31 10:01 Pay.class
+-rw-r--r-- 1 saran cpp  984 Aug 31 10:12 Pay.java
+-rw------- 1 saran cpp    0 Aug 31 10:13 [0m[00;32mpj1.txt[0m
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m cat Pay,[K.java
+//Sara Nersisian
+//CS1400, section 05
+//Project 1 - Payroll program
+//08/31/20
+
+
+//This program calculates the user's gross pay
+
+import java.util.Scanner;  //to be able to read from the keyboard
+
+public class Pay
+{
+   public static void main(String [] args)
+   {
+
+      //create a Scanner object to read from the keyboard
+      Scanner keyboard = new Scanner(System.in);
+
+      //identifier declarations
+      double hours;     //number of hours worked
+      double rate;      //hourly pay rate
+      double pay;       //gross pay
+
+      //display prompts and get input
+      System.out.print("How many hours did you work? ");
+      hours = keyboard.nextDouble();
+      System.out.print("How much do you get paid per hour? ");
+      rate = keyboard.nextDouble();
+
+      //calculations
+      if(hours <= 40)
+         pay = hours * rate;
+      else
+         pay = (hours - 40) * (1.5 * rate) + 40 * rate;
+
+      //display results
+      System.out.println("You earned $" + pay);
+   }
+}
+
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m java Pay
+How many hours did you work? 35
+How much do you get paid per hour? 17
+You earned $595.0
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m P[Kjava Pay
+How many hours did you work? 40
+How much do you get paid per hour? 17
+You earned $680.0
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m java Pay
+How many hours did you work? 45
+How much do you get paid per hour? 17
+You earned $807.5
+]0;saran@abbott:~/cs1400/project[01;32msaran@abbott[01;34m ~/cs1400/project $[00m exit
+exit
+
+Script done on 2020-08-31 10:15:43-07:00 [COMMAND_EXIT_CODE="0"]
