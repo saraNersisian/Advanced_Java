@@ -1,2 +1,2 @@
-# advanced_JAVA
+# Advanced_JAVA
 Advanced java class projects
