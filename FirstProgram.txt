@@ -1,0 +1,32 @@
+Script started on 2020-08-28 10:30:35-07:00 [TERM="xterm" TTY="/dev/pts/0" COLUMNS="93" LINES="61"]
+]0;saran@abbott:~/cs1400/codingPractice[01;32msaran@abbott[01;34m ~/cs1400/codingPractice $[00m pwd
+/user/saran/cs1400/codingPractice
+]0;saran@abbott:~/cs1400/codingPractice[01;32msaran@abbott[01;34m ~/cs1400/codingPractice $[00m ls -l
+total 2
+-rw------- 1 saran cpp 255 Aug 28 10:29 FirstProgram.java
+-rw------- 1 saran cpp   0 Aug 28 10:30 [0m[00;32mFirstProgram.txt[0m
+]0;saran@abbott:~/cs1400/codingPractice[01;32msaran@abbott[01;34m ~/cs1400/codingPractice $[00m cat FirstProgram.java
+//Sara Nersisian
+//08/27/2020
+public class FirstProgram
+{
+    public static void main(String[] args)
+	{
+          System.out.print("This is my ");
+          System.out.println();
+          System.out.println(" ...  first JAVA program ... ");
+        }
+}
+
+]0;saran@abbott:~/cs1400/codingPractice[01;32msaran@abbott[01;34m ~/cs1400/codingPractice $[00m javac FirstProgram.java
+]0;saran@abbott:~/cs1400/codingPractice[01;32msaran@abbott[01;34m ~/cs1400/codingPractice $[00m ha[K[Kjava FirstProgram
+This is my 
+ ...  first JAVA program ... 
+]0;saran@abbott:~/cs1400/codingPractice[01;32msaran@abbott[01;34m ~/cs1400/codingPractice $[00m ec[Kxit[K[K[K[Kec[Kxit[K[K[K[Kx[Kcat Fisrt[K[K[KrstProgram.txt
+]0;saran@abbott:~/cs1400/codingPractice[01;32msaran@abbott[01;34m ~/cs1400/codingPractice $[00m cat First{[KProgram.txt.
+cat: FirstProgram.txt.: No such file or directory
+]0;saran@abbott:~/cs1400/codingPractice[01;32msaran@abbott[01;34m ~/cs1400/codingPractice $[00m cat First Program[K[K[K[K[K[K[K[K[KtProgram.txt
+]0;saran@abbott:~/cs1400/codingPractice[01;32msaran@abbott[01;34m ~/cs1400/codingPractice $[00m exit
+exit
+
+Script done on 2020-08-28 10:42:34-07:00 [COMMAND_EXIT_CODE="0"]
